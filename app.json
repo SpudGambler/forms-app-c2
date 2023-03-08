@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "forms-app-c2",
+    "slug": "forms-app-c2",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "forms-app-c2"
+}
