@@ -86,7 +86,7 @@ export const VehicleForm = ({
       setRegisteredVehicles([...registeredVehicles, newVehicle]);
     }
 
-    setUser({});
+    setVehicle({});
     setModalParking(!modalParking);
     setPlate("");
     setType("");
@@ -119,7 +119,7 @@ export const VehicleForm = ({
           style={styles.btnExit}
           onPress={() => {
             setModalParking(false);
-            setUser({});
+            setVehicle({});
           }}>
           <Text style={styles.btnTextExit}>X</Text>
         </Pressable>

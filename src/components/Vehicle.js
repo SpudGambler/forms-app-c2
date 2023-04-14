@@ -3,7 +3,12 @@ import { Pressable, StyleSheet } from "react-native";
 import { View } from "react-native";
 import { Text } from "react-native";
 
-export const Vehicle = ({ item, setModalParking, editVehicle }) => {
+export const Vehicle = ({
+  item,
+  setModalParking,
+  editVehicle,
+  deleteVehicle,
+}) => {
   const { plate, type, sector, keys, dateTime, comments, id } = item;
   const dateFormate = (date) => {
     const newDate = new Date(date);
@@ -44,7 +49,9 @@ export const Vehicle = ({ item, setModalParking, editVehicle }) => {
             }}>
             <Text style={styles.text}>Editar</Text>
           </Pressable>
-          <Pressable style={[styles.btn, styles.btnDeleteOne]}>
+          <Pressable
+            style={[styles.btn, styles.btnDeleteOne]}
+            onPress={() => deleteVehicle(id)}>
             <Text style={styles.text}>Eliminar</Text>
           </Pressable>
         </View>

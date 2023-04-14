@@ -88,6 +88,7 @@ export default function App() {
         modalParkingList={modalParkingList}
         setModalParkingList={setModalParkingList}
         registeredVehicles={registeredVehicles}
+        setRegisteredVehicles={setRegisteredVehicles}
         setModalParking={setModalParking}
         setVehicle={setVehicle}></VehicleList>
 

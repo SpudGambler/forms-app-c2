@@ -14,6 +14,7 @@ export const VehicleList = ({
   modalParkingList,
   setModalParkingList,
   registeredVehicles,
+  setRegisteredVehicles,
   setModalParking,
   setVehicle,
 }) => {
@@ -22,6 +23,13 @@ export const VehicleList = ({
       (vehicle) => vehicle.id === id
     );
     setVehicle(editVehicle[0]);
+  };
+
+  const deleteVehicle = (id) => {
+    const newRegisteredVehicles = registeredVehicles.filter(
+      (vehicle) => vehicle.id !== id
+    );
+    setRegisteredVehicles(newRegisteredVehicles);
   };
   return (
     <Modal animationType='slide' visible={modalParkingList}>
@@ -50,6 +58,7 @@ export const VehicleList = ({
                   item={item}
                   setModalParking={setModalParking}
                   editVehicle={editVehicle}
+                  deleteVehicle={deleteVehicle}
                 />
               );
             }}
