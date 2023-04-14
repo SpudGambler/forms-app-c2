@@ -21,6 +21,7 @@ export const VehicleForm = ({
   setModalParking,
   registeredVehicles,
   setRegisteredVehicles,
+  setVehicle,
   vehicle: vehicleObj,
 }) => {
   const [id, setId] = useState("");
@@ -76,16 +77,17 @@ export const VehicleForm = ({
 
     if (id) {
       newVehicle.id = id;
-      console.log("Editando", newVehicle);
-      return;
+      const vehiclesEdited = registeredVehicles.map((vehicleState) =>
+        vehicleState.id === newVehicle.id ? newVehicle : vehicleState
+      );
+      setRegisteredVehicles(vehiclesEdited);
     } else {
       newVehicle.id = Date.now();
       setRegisteredVehicles([...registeredVehicles, newVehicle]);
     }
 
-    setRegisteredVehicles([...registeredVehicles, newVehicle]);
+    setUser({});
     setModalParking(!modalParking);
-
     setPlate("");
     setType("");
     setSector("");
@@ -117,6 +119,7 @@ export const VehicleForm = ({
           style={styles.btnExit}
           onPress={() => {
             setModalParking(false);
+            setUser({});
           }}>
           <Text style={styles.btnTextExit}>X</Text>
         </Pressable>

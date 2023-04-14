@@ -14,7 +14,7 @@ import { Vehicle } from "./src/components/Vehicle";
 import { VehicleList } from "./src/components/VehicleList";
 
 export default function App() {
-  const [modalVisible, setModalVisible] = useState(false);
+  /* const [modalVisible, setModalVisible] = useState(false); */
   const [modalUserForm, setModalUserForm] = useState(false);
   const [modalParking, setModalParking] = useState(false);
   const [modalParkingList, setModalParkingList] = useState(false);
@@ -28,31 +28,32 @@ export default function App() {
     setUser(editUser[0]);
   };
 
+  const deleteUser = (id) => {
+    const newRegisteredUsers = registeredUsers.filter(
+      (userState) => userState.id !== id
+    );
+    setRegisteredUsers(newRegisteredUsers);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>
         Registrate en la {""}
         <Text style={styles.titleBold}>UAM</Text>
       </Text>
-      <Pressable
+      {/* <Pressable
         onPress={() => setModalVisible(true)}
         style={styles.btnNewUser}>
         <Text style={styles.titleButton}>Nuevo Usuario</Text>
-      </Pressable>
+      </Pressable> */}
       <Pressable
-        onPress={() => {
-          setModalUserForm(true);
-          setUser({});
-        }}
+        onPress={() => setModalUserForm(true)}
         style={styles.btnNewUser}>
         <Text style={styles.titleButton}>Nuevo Usuario</Text>
       </Pressable>
 
       <Pressable
-        onPress={() => {
-          setModalParking(true);
-          setVehicle({});
-        }}
+        onPress={() => setModalParking(true)}
         style={styles.btnNewUser}>
         <Text style={styles.titleButton}>Sistema de Parqueaderos</Text>
       </Pressable>
@@ -76,6 +77,7 @@ export default function App() {
                 item={item}
                 setModalUserForm={setModalUserForm}
                 editUser={editUser}
+                deleteUser={deleteUser}
               />
             );
           }}
@@ -94,16 +96,18 @@ export default function App() {
         setModalParking={setModalParking}
         registeredVehicles={registeredVehicles}
         setRegisteredVehicles={setRegisteredVehicles}
+        setVehicle={setVehicle}
         vehicle={vehicle}></VehicleForm>
       <UserForm
         modalUserForm={modalUserForm}
         setModalUserForm={setModalUserForm}
         registeredUsers={registeredUsers}
         setRegisteredUsers={setRegisteredUsers}
-        user={user}></UserForm>
-      <Modal animationType='slide' visible={modalVisible}>
+        user={user}
+        setUser={setUser}></UserForm>
+      {/* <Modal animationType='slide' visible={modalVisible}>
         <Text>Desde modal</Text>
-      </Modal>
+      </Modal> */}
     </SafeAreaView>
   );
 }

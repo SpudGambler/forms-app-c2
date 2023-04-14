@@ -2,7 +2,7 @@ import React from "react";
 
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
-export const User = ({ item, setModalUserForm, editUser }) => {
+export const User = ({ item, setModalUserForm, editUser, deleteUser }) => {
   const { userName, date, id } = item;
   const dateFormate = (date) => {
     const newDate = new Date(date);
@@ -29,7 +29,9 @@ export const User = ({ item, setModalUserForm, editUser }) => {
           }}>
           <Text style={styles.text}>Editar</Text>
         </Pressable>
-        <Pressable style={[styles.btn, styles.btnDeleteOne]}>
+        <Pressable
+          style={[styles.btn, styles.btnDeleteOne]}
+          onPress={() => deleteUser(id)}>
           <Text style={styles.text}>Eliminar</Text>
         </Pressable>
       </View>
